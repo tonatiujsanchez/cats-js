@@ -1,0 +1,170 @@
+/* font-family: 'Bowlby One SC', cursive; */
+/* font-family: 'Raleway', sans-serif; */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: aliceblue;
+}
+
+img {
+    width: 100%;
+}
+
+button {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-family: 'Bowlby One SC', cursive;
+}
+
+.nav__container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav__container button {
+    background-color: #FFC83D;
+    min-width: 120px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav a:first-child {
+    margin-right: 1rem;
+}
+
+.main {
+    margin-bottom: 120px;
+}
+
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cats__content {
+    position: relative;
+    width: 400px;
+}
+
+.cats__content img {
+    width: 100%;
+}
+
+.cats__content .btnToogleFavorite {
+    margin-top: 12px;
+    padding: 0;
+    background: none;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    color: #ffffff;
+    /* color: #ff0000; */
+    text-shadow: 0 0 30px rgba(32, 32, 32, 0.7);
+
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.cats__content .btnToogleFavorite:hover {
+    color: #ff0000;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Loading */
+.ring {
+    --uib-size: 16px;
+    --uib-speed: 2s;
+    --uib-color: black;
+
+    height: var(--uib-size);
+    width: var(--uib-size);
+    vertical-align: middle;
+    transform-origin: center;
+    animation: rotate var(--uib-speed) linear infinite;
+}
+
+.ring circle {
+    fill: none;
+    stroke: var(--uib-color);
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes stretch {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dashoffset: -124px;
+    }
+}

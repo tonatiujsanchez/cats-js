@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CatsApp</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/main.css">
+    
+</head>
+<body>
+    <header class="header container">
+        <h1>🐱CATS</h1>
+        <div class="nav__container">
+            <nav class="nav">
+                <a href="#">🏠 Inico</a>
+                <a href="#">❤ Favoritos</a>
+            </nav>
+            <button 
+                onclick="getCats()"
+                id="btnGenerate" >
+                Generar
+            </button>
+        </div>
+    </header>
+    <main class="main">
+        <section class="container">
+            <div class="cats"></div>
+        </section>
+        <section class="favorites">
+
+        </section>
+    </main>
+    <script src="./js/main.js"></script>
+</body>
+</html>
