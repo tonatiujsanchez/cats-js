@@ -15,18 +15,20 @@
     
 </head>
 <body>
-    <header class="header container">
-        <h1>🐱CATS</h1>
-        <div class="nav__container">
-            <nav class="nav">
-                <a href="#">🏠 Inico</a>
-                <a href="#">❤ Favoritos</a>
-            </nav>
-            <button 
-                onclick="getCats()"
-                id="btnGenerate" >
-                Generar
-            </button>
+    <header class="header">
+        <div class="header__content container">
+            <h1>🐱CATS</h1>
+            <div class="nav__container">
+                <nav class="nav">
+                    <button id="btnHome" class="nav__btn active">🏠 Inico</button>
+                    <button id="btnFavorites" class="nav__btn">❤ Favoritos</button>
+                </nav>
+                <button 
+                    onclick="getCats()"
+                    id="btnGenerate" >
+                    Generar
+                </button>
+            </div>
         </div>
     </header>
     <main class="main">

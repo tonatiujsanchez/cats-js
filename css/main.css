@@ -1,5 +1,11 @@
 /* font-family: 'Bowlby One SC', cursive; */
 /* font-family: 'Raleway', sans-serif; */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     background-color: aliceblue;
@@ -39,13 +45,18 @@ button:disabled {
 }
 
 .header {
+    padding: 1rem 1rem;
+    box-shadow: 0 1px 3px rgb(202, 227, 248);
+    margin-bottom: 4rem;
+}
+
+.header__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
 }
 
-.header h1 {
+.header__content h1 {
     font-family: 'Bowlby One SC', cursive;
 }
 
@@ -60,15 +71,22 @@ button:disabled {
     min-width: 120px;
 }
 
-.nav a {
+.nav .nav__btn {
+    all: unset;
     text-decoration: none;
     color: #222;
     font-weight: 700;
     text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0.6;
 }
 
-.nav a:first-child {
+.nav .nav__btn:first-child {
     margin-right: 1rem;
+}
+
+.nav .nav__btn.active {
+    opacity: 1;
 }
 
 .main {
@@ -76,15 +94,13 @@ button:disabled {
 }
 
 .cats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    padding: 0 1rem;
 }
 
 .cats__content {
     position: relative;
-    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .cats__content img {
@@ -100,7 +116,6 @@ button:disabled {
     width: 32px;
     height: 32px;
     color: #ffffff;
-    /* color: #ff0000; */
     text-shadow: 0 0 30px rgba(32, 32, 32, 0.7);
 
     position: absolute;
@@ -108,13 +123,19 @@ button:disabled {
     right: 10px;
 }
 
-.cats__content .btnToogleFavorite:hover {
+.cats__content .btnToogleFavorite.activeFavorite {
     color: #ff0000;
-
 }
 
 
-
+@media screen and (min-width: 576px) {
+    .cats {
+        columns: 2;
+        column-gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+}
 
 
 
