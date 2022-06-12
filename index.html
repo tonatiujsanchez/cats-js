@@ -32,11 +32,17 @@
         </div>
     </header>
     <main class="main">
+        <section id="uploadingCat">
+            <h2>Sube la foto de tu Gato</h2>
+            <form id="uploadingForm">
+                <input type="file" id="file" name="file">
+                <button type="button" onclick="uploadImage()">Subir foto</button>
+            </form>
+        </section>
         <section class="container">
             <div class="cats"></div>
         </section>
         <section class="favorites">
-
         </section>
     </main>
     <script src="./js/main.js"></script>

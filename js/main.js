@@ -60,11 +60,17 @@ async function getCats() {
 }
 
 
-
+// Peticion realizada con Headers
 async function loadFavoritesCats() {
 
-    const URL_FAVORITES = `${API_URL}/favourites?api_key=${API_KEY}`
-    const resp = await fetch(URL_FAVORITES)
+    // const URL_FAVORITES = `${API_URL}/favourites?api_key=${API_KEY}`
+    const URL_FAVORITES = `${API_URL}/favourites`
+    const resp = await fetch(URL_FAVORITES,{
+        method: 'GET',
+        headers: {
+            'x-api-key': API_KEY
+        }
+    })
     const result = await resp.json()
 
     if( resp.status !== 200 ) {
@@ -92,7 +98,6 @@ function toogleFavorite( cat, htmlCat ) {
         if(favoriteCat){
             deleteFavorite( favoriteCat.id, htmlCat )
         }else{
-            console.log('NotFavorite')
             saveFavoriteCat(cat, htmlCat)
         }
     }
@@ -102,11 +107,13 @@ function toogleFavorite( cat, htmlCat ) {
 
 async function saveFavoriteCat(cat, htmlCat) {
 
-    const URL_FAVORITES = `${API_URL}/favourites?api_key=${API_KEY}`
+    // const URL_FAVORITES = `${API_URL}/favourites?api_key=${API_KEY}`
+    const URL_FAVORITES = `${API_URL}/favourites`
     const resp = await fetch(URL_FAVORITES, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY
         },
         body: JSON.stringify({
             image_id: cat.id,  
@@ -114,6 +121,10 @@ async function saveFavoriteCat(cat, htmlCat) {
     })
 
     const result = await resp.json()
+
+    if(!htmlCat){
+        return
+    }
 
     if( resp.status !== 200 ) {
         console.log( resp.status + data.message );
@@ -138,10 +149,14 @@ async function saveFavoriteCat(cat, htmlCat) {
 
 async function deleteFavorite( favoriteId, htmlCat ) {
 
-    const URL_FAVORITES_DELETE = `https://api.thecatapi.com/v1/favourites/${favoriteId}?api_key=${API_KEY}`
+    // const URL_FAVORITES_DELETE = `https://api.thecatapi.com/v1/favourites/${favoriteId}?api_key=${API_KEY}`
+    const URL_FAVORITES_DELETE = `https://api.thecatapi.com/v1/favourites/${favoriteId}`
     
     const resp = await fetch(URL_FAVORITES_DELETE,{
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'x-api-key': API_KEY
+        }
     })
     const result = await resp.json()
     
@@ -198,6 +213,37 @@ function addImgs(imgs) {
 }
 
 
+async function uploadImage() {
+    
+    loading()
+
+    const URL_UPLOAD_IMAGE = `https://api.thecatapi.com/v1/images/upload`
+
+    const form = document.getElementById('uploadingForm')
+    const formData = new FormData(form)
+
+    const resp = await fetch(URL_UPLOAD_IMAGE, {
+        method: 'POST',
+        headers: {
+            // 'Content-Type': 'multipart/form-data',
+            'x-api-key': API_KEY,
+        },
+        body: formData
+    })
+
+    const result = await resp.json()
+    
+    
+    if( resp.status !== 201 ){
+        console.log('hubo un error al subir el archivo');   
+    }else{
+        console.log('subiendo foto...', result);
+        console.log('subiendo foto...', result.url);
+    }
+    saveFavoriteCat(result)
+    finishLoading()
+
+}
 
 function clearHTML() {
     while (cats.firstChild) {
